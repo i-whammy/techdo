@@ -11,8 +11,7 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
-
-// FizzBuzz ... 
+// 問題1 
 func FizzBuzz(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	num, _ := strconv.Atoi(p.ByName("num"))
 
@@ -36,7 +35,7 @@ func FizzBuzz(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	fmt.Fprintln(w, resp)
 }
 
-// Name ...
+// 問題4
 func Name(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	name := p.ByName("name")
 
@@ -85,7 +84,6 @@ func main() {
 
 	router.GET("/FizzBuzz/:num", FizzBuzz)
 	router.GET("/Profile/:name", Name)
-
 	router.POST("/Profile", Profile)
 
 	err := http.ListenAndServe(":8080", router)
